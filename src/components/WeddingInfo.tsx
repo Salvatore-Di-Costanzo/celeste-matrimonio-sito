@@ -32,7 +32,7 @@ const WeddingInfo = () => {
                 </div>
                 <div className="flex items-center justify-center space-x-2">
                   <span className="text-lg text-primary">📍</span>
-                  <span className="text-lg font-inter text-gray-700">[Chiesa da inserire]</span>
+                  <span className="text-lg font-inter text-gray-700">Chiesa San Giuseppe</span>
                 </div>
               </div>
               <div className="mt-6 p-4 bg-primary/10 rounded-2xl">
@@ -57,7 +57,7 @@ const WeddingInfo = () => {
                 </div>
                 <div className="flex items-center justify-center space-x-2">
                   <span className="text-lg text-primary">📍</span>
-                  <span className="text-lg font-inter text-gray-700">[Ristorante da inserire]</span>
+                  <span className="text-lg font-inter text-gray-700">Ristorante per il ricevimento</span>
                 </div>
               </div>
               <div className="mt-6 p-4 bg-primary/10 rounded-2xl">

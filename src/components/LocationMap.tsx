@@ -7,31 +7,33 @@ const LocationMap = () => {
       id: 1,
       name: 'Chiesa',
       icon: '⛪',
-      address: '[Indirizzo Chiesa da inserire]',
+      address: 'Chiesa San Giuseppe',
       time: '11:00',
-      color: 'bg-blue-500'
+      color: 'bg-blue-500',
+      mapLink: 'https://maps.app.goo.gl/XWjuAKumSc2msdfK8'
     },
     {
       id: 2,
       name: 'Parcheggio Chiesa',
       icon: '🅿️',
-      address: '[Parcheggio vicino alla chiesa]',
+      address: 'Parcheggio vicino alla chiesa',
       time: 'dalle 10:30',
-      color: 'bg-green-500'
+      color: 'bg-green-500',
+      mapLink: 'https://maps.app.goo.gl/1HDkNWegdvdAdVTr6'
     },
     {
       id: 3,
       name: 'Ristorante',
       icon: '🍽️',
-      address: '[Indirizzo Ristorante da inserire]',
+      address: 'Ristorante per il ricevimento',
       time: '13:30',
-      color: 'bg-red-500'
+      color: 'bg-red-500',
+      mapLink: 'https://maps.app.goo.gl/qsr51LXK9UZdUNAZ8'
     }
   ];
 
-  const openInGoogleMaps = (address: string) => {
-    const encodedAddress = encodeURIComponent(address);
-    window.open(`https://www.google.com/maps/search/?api=1&query=${encodedAddress}`, '_blank');
+  const openInGoogleMaps = (mapLink: string) => {
+    window.open(mapLink, '_blank');
   };
 
   return (
@@ -74,7 +76,7 @@ const LocationMap = () => {
                 </div>
 
                 <button
-                  onClick={() => openInGoogleMaps(location.address)}
+                  onClick={() => openInGoogleMaps(location.mapLink)}
                   className="w-full bg-primary hover:bg-primary/90 text-white font-inter font-medium py-3 px-6 rounded-2xl transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl"
                 >
                   <div className="flex items-center justify-center space-x-2">
