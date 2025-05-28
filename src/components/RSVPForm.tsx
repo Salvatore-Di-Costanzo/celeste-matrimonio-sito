@@ -1,6 +1,7 @@
 
 import React, { useState } from 'react';
 import { useToast } from '../hooks/use-toast';
+import { supabase } from '../integrations/supabase/client';
 
 const RSVPForm = () => {
   const [formData, setFormData] = useState({
@@ -9,6 +10,7 @@ const RSVPForm = () => {
     children: ''
   });
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [errors, setErrors] = useState<{[key: string]: string}>({});
   const { toast } = useToast();
 
@@ -44,16 +46,50 @@ const RSVPForm = () => {
     return Object.keys(newErrors).length === 0;
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
-    if (validateForm()) {
+    if (!validateForm()) {
+      return;
+    }
+
+    setIsSubmitting(true);
+
+    try {
+      const { error } = await supabase
+        .from('rsvp_confirmations')
+        .insert({
+          family_name: formData.family,
+          adults_count: parseInt(formData.adults),
+          children_count: parseInt(formData.children) || 0,
+          will_attend: true
+        });
+
+      if (error) {
+        console.error('Error inserting RSVP:', error);
+        toast({
+          title: "Errore durante il salvataggio",
+          description: "Si è verificato un errore. Riprova più tardi.",
+          variant: "destructive"
+        });
+        return;
+      }
+
       setIsSubmitted(true);
       toast({
         title: "Partecipazione confermata! 💕",
         description: "Grazie per aver confermato! Non vediamo l'ora di festeggiare con voi.",
       });
-      console.log('RSVP Data:', formData);
+      console.log('RSVP saved successfully to database');
+    } catch (error) {
+      console.error('Unexpected error:', error);
+      toast({
+        title: "Errore inaspettato",
+        description: "Si è verificato un errore. Riprova più tardi.",
+        variant: "destructive"
+      });
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
@@ -118,7 +154,8 @@ const RSVPForm = () => {
               <select
                 value={formData.family}
                 onChange={(e) => handleInputChange('family', e.target.value)}
-                className={`w-full p-4 border-2 rounded-2xl font-inter bg-white/80 transition-all duration-300 focus:ring-4 focus:ring-primary/20 focus:border-primary ${
+                disabled={isSubmitting}
+                className={`w-full p-4 border-2 rounded-2xl font-inter bg-white/80 transition-all duration-300 focus:ring-4 focus:ring-primary/20 focus:border-primary disabled:opacity-50 disabled:cursor-not-allowed ${
                   errors.family ? 'border-red-400' : 'border-gray-200'
                 }`}
               >
@@ -145,8 +182,9 @@ const RSVPForm = () => {
                 max="10"
                 value={formData.adults}
                 onChange={(e) => handleInputChange('adults', e.target.value)}
+                disabled={isSubmitting}
                 placeholder="es. 2"
-                className={`w-full p-4 border-2 rounded-2xl font-inter bg-white/80 transition-all duration-300 focus:ring-4 focus:ring-primary/20 focus:border-primary ${
+                className={`w-full p-4 border-2 rounded-2xl font-inter bg-white/80 transition-all duration-300 focus:ring-4 focus:ring-primary/20 focus:border-primary disabled:opacity-50 disabled:cursor-not-allowed ${
                   errors.adults ? 'border-red-400' : 'border-gray-200'
                 }`}
               />
@@ -166,8 +204,9 @@ const RSVPForm = () => {
                 max="10"
                 value={formData.children}
                 onChange={(e) => handleInputChange('children', e.target.value)}
+                disabled={isSubmitting}
                 placeholder="es. 1 (opzionale)"
-                className={`w-full p-4 border-2 rounded-2xl font-inter bg-white/80 transition-all duration-300 focus:ring-4 focus:ring-primary/20 focus:border-primary ${
+                className={`w-full p-4 border-2 rounded-2xl font-inter bg-white/80 transition-all duration-300 focus:ring-4 focus:ring-primary/20 focus:border-primary disabled:opacity-50 disabled:cursor-not-allowed ${
                   errors.children ? 'border-red-400' : 'border-gray-200'
                 }`}
               />
@@ -182,11 +221,12 @@ const RSVPForm = () => {
             {/* Submit button */}
             <button
               type="submit"
-              className="w-full bg-primary hover:bg-primary/90 text-white font-inter font-semibold py-4 px-8 rounded-2xl transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl text-lg"
+              disabled={isSubmitting}
+              className="w-full bg-primary hover:bg-primary/90 disabled:bg-primary/50 disabled:cursor-not-allowed text-white font-inter font-semibold py-4 px-8 rounded-2xl transition-all duration-300 transform hover:scale-105 disabled:hover:scale-100 shadow-lg hover:shadow-xl text-lg"
             >
               <div className="flex items-center justify-center space-x-2">
                 <span>💌</span>
-                <span>Conferma Partecipazione</span>
+                <span>{isSubmitting ? 'Salvando...' : 'Conferma Partecipazione'}</span>
               </div>
             </button>
 
