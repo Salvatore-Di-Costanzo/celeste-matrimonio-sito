@@ -1,4 +1,3 @@
-
 import React from 'react';
 
 const LocationMap = () => {
@@ -7,7 +6,7 @@ const LocationMap = () => {
       id: 1,
       name: 'Chiesa',
       icon: '⛪',
-      address: 'Basilica Concattedrale di Maria SS. Assunta e Santo Stefano',
+      address: 'Basilica Concattedrale di Maria SS. Assunta',
       time: '11:00',
       color: 'bg-blue-500',
       mapLink: 'https://maps.app.goo.gl/XWjuAKumSc2msdfK8'

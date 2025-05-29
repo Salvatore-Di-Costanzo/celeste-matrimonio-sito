@@ -32,7 +32,7 @@ const WeddingInfo = () => {
                 </div>
                 <div className="flex items-center justify-center space-x-2">
                   <span className="text-lg text-primary">📍</span>
-                  <span className="text-lg font-inter text-gray-700">Basilica Concattedrale di Maria SS. Assunta e Santo Stefano</span>
+                  <span className="text-lg font-inter text-gray-700">Basilica Concattedrale di Maria SS. Assunta</span>
                 </div>
               </div>
               <div className="mt-6 p-4 bg-primary/10 rounded-2xl">
