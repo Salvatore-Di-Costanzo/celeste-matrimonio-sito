@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { useToast } from '../hooks/use-toast';
 import { supabase } from '../integrations/supabase/client';
@@ -17,16 +16,32 @@ const RSVPForm = () => {
   const { toast } = useToast();
 
   const families = [
-    'Famiglia Rossi',
-    'Famiglia Bianchi',
-    'Famiglia Verdi',
-    'Famiglia Neri',
-    'Famiglia Romano',
-    'Famiglia Ricci',
-    'Famiglia Marino',
-    'Famiglia Greco',
-    'Famiglia Bruno',
-    'Famiglia Gallo'
+    'Armandini Domenico',
+    'Brionetti Giuseppe',
+    'Cantone Michele',
+    'Cirillo Franco',
+    'Cirillo Italia',
+    'Cirillo Massimo',
+    'Cirillo Maurizio',
+    'Cirillo Michele',
+    'Cirillo Ubaldo',
+    'Coscione Maria',
+    'Di Cicco Antonio',
+    'Di Costanzo Arcangelo',
+    'Di Costanzo Francesco',
+    'Di Costanzo Francesca',
+    'Di Costanzo Bruno',
+    'Esposito Lina',
+    'Esposito Rina',
+    'Esposito Salvatore',
+    'Ferrara Luciano',
+    'Gagliardi Angelina',
+    'Gagliardi Giovanni',
+    'Gagliardi Ubaldo',
+    'Gruppo Ufficio',
+    'Guerra Antonio',
+    'Lepre Antonio',
+    'Morvillo Venera'
   ];
 
   // Carica i dati esistenti quando viene selezionata una famiglia

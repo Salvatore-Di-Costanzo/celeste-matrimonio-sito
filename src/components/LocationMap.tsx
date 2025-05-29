@@ -7,16 +7,16 @@ const LocationMap = () => {
       id: 1,
       name: 'Chiesa',
       icon: '⛪',
-      address: 'Chiesa San Giuseppe',
+      address: 'Basilica Concattedrale di Maria SS. Assunta e Santo Stefano',
       time: '11:00',
       color: 'bg-blue-500',
       mapLink: 'https://maps.app.goo.gl/XWjuAKumSc2msdfK8'
     },
     {
       id: 2,
-      name: 'Parcheggio Chiesa',
+      name: 'Parcheggio multipiano',
       icon: '🅿️',
-      address: 'Parcheggio vicino alla chiesa',
+      address: 'Parcheggio multipiano',
       time: 'dalle 10:30',
       color: 'bg-green-500',
       mapLink: 'https://maps.app.goo.gl/1HDkNWegdvdAdVTr6'
@@ -25,7 +25,7 @@ const LocationMap = () => {
       id: 3,
       name: 'Ristorante',
       icon: '🍽️',
-      address: 'Ristorante per il ricevimento',
+      address: 'Colle Rajano',
       time: '13:30',
       color: 'bg-red-500',
       mapLink: 'https://maps.app.goo.gl/qsr51LXK9UZdUNAZ8'
@@ -85,29 +85,16 @@ const LocationMap = () => {
                   </div>
                 </button>
 
-                {location.name === 'Parcheggio Chiesa' && (
+                {location.name === 'Parcheggio multipiano' && (
                   <div className="mt-4 p-3 bg-green-50 rounded-xl border border-green-200">
                     <p className="text-xs font-inter text-green-700">
-                      💡 Consigliamo di arrivare con anticipo per trovare parcheggio
+                      💡 Per maggiore comodità, suggeriamo di far scendere i passeggeri prima di imboccare il senso unico nei pressi della Farmacia De Lucia prima nei pressi della rotonda, e poi procedere verso il parcheggio
                     </p>
                   </div>
                 )}
               </div>
             </div>
           ))}
-        </div>
-
-        {/* Map placeholder with decorative elements */}
-        <div className="mt-12 bg-gradient-to-r from-wedding-blue to-wedding-blue-dark rounded-3xl p-8 text-center shadow-lg">
-          <h4 className="text-2xl font-playfair font-semibold text-white mb-4">
-            Mappa delle location
-          </h4>
-          <div className="bg-white/20 backdrop-blur-sm rounded-2xl p-6 border border-white/30">
-            <div className="text-6xl mb-4 animate-gentle-bounce">🗺️</div>
-            <p className="text-white font-inter">
-              Clicca sui pulsanti sopra per navigare verso ogni location con Google Maps
-            </p>
-          </div>
         </div>
       </div>
     </section>

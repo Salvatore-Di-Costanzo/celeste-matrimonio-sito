@@ -32,12 +32,12 @@ const WeddingInfo = () => {
                 </div>
                 <div className="flex items-center justify-center space-x-2">
                   <span className="text-lg text-primary">📍</span>
-                  <span className="text-lg font-inter text-gray-700">Chiesa San Giuseppe</span>
+                  <span className="text-lg font-inter text-gray-700">Basilica Concattedrale di Maria SS. Assunta e Santo Stefano</span>
                 </div>
               </div>
               <div className="mt-6 p-4 bg-primary/10 rounded-2xl">
                 <p className="text-sm font-inter text-gray-600 italic">
-                  "Dove due cuori si uniscono per sempre"
+                  "L'inizio di un nuovo cammino insieme"
                 </p>
               </div>
             </div>
@@ -57,12 +57,12 @@ const WeddingInfo = () => {
                 </div>
                 <div className="flex items-center justify-center space-x-2">
                   <span className="text-lg text-primary">📍</span>
-                  <span className="text-lg font-inter text-gray-700">Ristorante per il ricevimento</span>
+                  <span className="text-lg font-inter text-gray-700">Colle Rajano</span>
                 </div>
               </div>
               <div className="mt-6 p-4 bg-primary/10 rounded-2xl">
                 <p className="text-sm font-inter text-gray-600 italic">
-                  "Dove festeggeremo insieme con gioia"
+                  "Dove ogni presenza renderà il giorno ancora più bello"
                 </p>
               </div>
             </div>
@@ -77,16 +77,16 @@ const WeddingInfo = () => {
             </h4>
             <div className="grid md:grid-cols-3 gap-4 text-sm font-inter text-gray-600">
               <div className="flex items-center justify-center space-x-2">
-                <span className="text-lg">🌸</span>
-                <span>Cerimonia all'aperto</span>
+                <span className="text-lg">🅿️</span>
+                <span>Gli sposi offrono a tutti gli invitati il parcheggio presso il multipiano nei pressi della chiesa</span>
               </div>
               <div className="flex items-center justify-center space-x-2">
-                <span className="text-lg">📸</span>
-                <span>Fotografo presente</span>
+                <span className="text-lg">👠</span>
+                <span>La chiesa e la location presentano alcuni scalini: consigliamo di indossare scarpe comode</span>
               </div>
               <div className="flex items-center justify-center space-x-2">
-                <span className="text-lg">🎵</span>
-                <span>Musica e balli</span>
+                <span className="text-lg">🍽️</span>
+                <span>Per accogliervi al meglio, vi chiediamo di comunicarci eventuali intolleranze o preferenze alimentari con anticipo</span>
               </div>
             </div>
           </div>

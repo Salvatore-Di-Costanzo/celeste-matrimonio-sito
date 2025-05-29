@@ -21,7 +21,7 @@ const Index = () => {
         <footer className="py-8 text-center text-gray-600">
           <div className="animate-float text-2xl mb-2">💕</div>
           <p className="text-sm font-inter">
-            Con tutto il nostro amore, Salvatore & Carmen
+            Salvatore & Carmen
           </p>
         </footer>
       </div>
