@@ -1,3 +1,4 @@
+
 import React from 'react';
 
 const LocationMap = () => {
@@ -87,7 +88,7 @@ const LocationMap = () => {
                 {location.name === 'Parcheggio multipiano' && (
                   <div className="mt-4 p-3 bg-green-50 rounded-xl border border-green-200">
                     <p className="text-xs font-inter text-green-700">
-                      💡 Per maggiore comodità, suggeriamo di far scendere i passeggeri prima di imboccare il senso unico nei pressi della Farmacia De Lucia prima nei pressi della rotonda, e poi procedere verso il parcheggio
+                      💡 Per maggiore comodità, consigliamo di far scendere i passeggeri nei pressi della rotonda, vicino alla Farmacia De Lucia, prima di imboccare il senso unico, e poi proseguire verso il parcheggio
                     </p>
                   </div>
                 )}
