@@ -1,5 +1,3 @@
-
-
 import React, { useState, useEffect } from 'react';
 import { useToast } from '../hooks/use-toast';
 import { supabase } from '../integrations/supabase/client';
@@ -144,26 +142,13 @@ const RSVPForm = () => {
         // Aggiorna la riga esistente usando l'ID
         console.log('Updating existing RSVP with ID:', existingRsvp.id);
         
-        // Proviamo prima con upsert per essere sicuri
         result = await supabase
           .from('rsvp_confirmations')
-          .upsert({
-            id: existingRsvp.id,
-            ...rsvpData
-          }, {
-            onConflict: 'id'
-          })
+          .update(rsvpData)
+          .eq('id', existingRsvp.id)
           .select();
           
-        // Se upsert non funziona, proviamo con update tradizionale
-        if (result.error) {
-          console.log('Upsert failed, trying regular update:', result.error);
-          result = await supabase
-            .from('rsvp_confirmations')
-            .update(rsvpData)
-            .eq('id', existingRsvp.id)
-            .select();
-        }
+        console.log('Update result:', result);
       } else {
         // Inserisci una nuova riga
         console.log('Inserting new RSVP');
@@ -171,18 +156,23 @@ const RSVPForm = () => {
           .from('rsvp_confirmations')
           .insert(rsvpData)
           .select();
+          
+        console.log('Insert result:', result);
       }
-
-      console.log('Supabase result:', result);
 
       if (result.error) {
         console.error('Error saving RSVP:', result.error);
         toast({
           title: "Errore durante il salvataggio",
-          description: "Si è verificato un errore. Riprova più tardi.",
+          description: `Si è verificato un errore: ${result.error.message}. Riprova più tardi.`,
           variant: "destructive"
         });
         return;
+      }
+
+      // Aggiorna lo stato locale con i nuovi dati
+      if (result.data && result.data.length > 0) {
+        setExistingRsvp(result.data[0]);
       }
 
       setIsSubmitted(true);
@@ -388,4 +378,3 @@ const RSVPForm = () => {
 };
 
 export default RSVPForm;
-
