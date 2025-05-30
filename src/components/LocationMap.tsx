@@ -5,21 +5,21 @@ const LocationMap = () => {
   const locations = [
     {
       id: 1,
+      name: 'Parcheggio chiesa',
+      icon: '🅿️',
+      address: 'Parcheggio multipiano',
+      time: 'dalle 10:30',
+      color: 'bg-green-500',
+      mapLink: 'https://maps.app.goo.gl/1HDkNWegdvdAdVTr6'
+    },
+    {
+      id: 2,
       name: 'Chiesa',
       icon: '⛪',
       address: 'Concattedrale di Maria SS. Assunta',
       time: '11:00',
       color: 'bg-blue-500',
       mapLink: 'https://maps.app.goo.gl/XWjuAKumSc2msdfK8'
-    },
-    {
-      id: 2,
-      name: 'Parcheggio multipiano',
-      icon: '🅿️',
-      address: 'Parcheggio multipiano',
-      time: 'dalle 10:30',
-      color: 'bg-green-500',
-      mapLink: 'https://maps.app.goo.gl/1HDkNWegdvdAdVTr6'
     },
     {
       id: 3,
@@ -85,7 +85,7 @@ const LocationMap = () => {
                   </div>
                 </button>
 
-                {location.name === 'Parcheggio multipiano' && (
+                {location.name === 'Parcheggio chiesa' && (
                   <div className="mt-4 p-3 bg-green-50 rounded-xl border border-green-200">
                     <p className="text-xs font-inter text-green-700">
                       💡 Per maggiore comodità, consigliamo di far scendere i passeggeri nei pressi della rotonda, vicino alla Farmacia De Lucia, prima di imboccare il senso unico, e poi proseguire verso il parcheggio
