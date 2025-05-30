@@ -1,4 +1,5 @@
 
+
 import React, { useState, useEffect } from 'react';
 import { useToast } from '../hooks/use-toast';
 import { supabase } from '../integrations/supabase/client';
@@ -142,11 +143,27 @@ const RSVPForm = () => {
       if (existingRsvp) {
         // Aggiorna la riga esistente usando l'ID
         console.log('Updating existing RSVP with ID:', existingRsvp.id);
+        
+        // Proviamo prima con upsert per essere sicuri
         result = await supabase
           .from('rsvp_confirmations')
-          .update(rsvpData)
-          .eq('id', existingRsvp.id)
+          .upsert({
+            id: existingRsvp.id,
+            ...rsvpData
+          }, {
+            onConflict: 'id'
+          })
           .select();
+          
+        // Se upsert non funziona, proviamo con update tradizionale
+        if (result.error) {
+          console.log('Upsert failed, trying regular update:', result.error);
+          result = await supabase
+            .from('rsvp_confirmations')
+            .update(rsvpData)
+            .eq('id', existingRsvp.id)
+            .select();
+        }
       } else {
         // Inserisci una nuova riga
         console.log('Inserting new RSVP');
@@ -371,3 +388,4 @@ const RSVPForm = () => {
 };
 
 export default RSVPForm;
+
