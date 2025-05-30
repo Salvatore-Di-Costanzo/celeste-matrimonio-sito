@@ -7,7 +7,7 @@ const LocationMap = () => {
       id: 1,
       name: 'Chiesa',
       icon: '⛪',
-      address: 'Basilica Concattedrale di Maria SS. Assunta',
+      address: 'Concattedrale di Maria SS. Assunta',
       time: '11:00',
       color: 'bg-blue-500',
       mapLink: 'https://maps.app.goo.gl/XWjuAKumSc2msdfK8'

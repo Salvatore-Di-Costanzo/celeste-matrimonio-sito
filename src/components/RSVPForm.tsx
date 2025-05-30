@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from 'react';
 import { useToast } from '../hooks/use-toast';
 import { supabase } from '../integrations/supabase/client';
@@ -56,6 +57,7 @@ const RSVPForm = () => {
       setIsLoadingExistingData(true);
       
       try {
+        console.log('Loading existing data for family:', formData.family);
         const { data, error } = await supabase
           .from('rsvp_confirmations')
           .select('*')
@@ -66,6 +68,8 @@ const RSVPForm = () => {
           console.error('Error loading existing RSVP:', error);
           return;
         }
+
+        console.log('Loaded data:', data);
 
         if (data) {
           setExistingRsvp(data);
@@ -130,20 +134,29 @@ const RSVPForm = () => {
         updated_at: new Date().toISOString()
       };
 
+      console.log('Submitting RSVP data:', rsvpData);
+      console.log('Existing RSVP:', existingRsvp);
+
       let result;
       
       if (existingRsvp) {
-        // Aggiorna la riga esistente
+        // Aggiorna la riga esistente usando l'ID
+        console.log('Updating existing RSVP with ID:', existingRsvp.id);
         result = await supabase
           .from('rsvp_confirmations')
           .update(rsvpData)
-          .eq('id', existingRsvp.id);
+          .eq('id', existingRsvp.id)
+          .select();
       } else {
         // Inserisci una nuova riga
+        console.log('Inserting new RSVP');
         result = await supabase
           .from('rsvp_confirmations')
-          .insert(rsvpData);
+          .insert(rsvpData)
+          .select();
       }
+
+      console.log('Supabase result:', result);
 
       if (result.error) {
         console.error('Error saving RSVP:', result.error);
@@ -209,7 +222,7 @@ const RSVPForm = () => {
             </div>
 
             <div className="text-sm text-gray-500 font-inter">
-              Riceverete ulteriori dettagli più vicino alla data del matrimonio
+              Vi aggiorneremo con maggiori dettagli nei giorni che precedono il matrimonio
             </div>
           </div>
         </div>

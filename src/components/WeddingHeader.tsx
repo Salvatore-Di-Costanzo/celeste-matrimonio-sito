@@ -32,10 +32,10 @@ const WeddingHeader = () => {
   return (
     <header className="relative min-h-screen flex items-center justify-center px-4 overflow-hidden">
       {/* Floating decorative elements */}
-      <div className="absolute top-10 left-10 text-4xl animate-float opacity-60">🌸</div>
-      <div className="absolute top-20 right-20 text-3xl animate-float opacity-50" style={{ animationDelay: '1s' }}>🌿</div>
-      <div className="absolute bottom-20 left-20 text-3xl animate-float opacity-40" style={{ animationDelay: '2s' }}>💐</div>
-      <div className="absolute bottom-10 right-10 text-4xl animate-float opacity-60" style={{ animationDelay: '0.5s' }}>🕊️</div>
+      <div className="absolute top-10 left-10 text-4xl animate-float opacity-60">✨</div>
+      <div className="absolute top-20 right-20 text-3xl animate-float opacity-50" style={{ animationDelay: '1s' }}>🤍</div>
+      <div className="absolute bottom-20 left-20 text-3xl animate-float opacity-40" style={{ animationDelay: '2s' }}>🌹</div>
+      <div className="absolute bottom-10 right-10 text-4xl animate-float opacity-60" style={{ animationDelay: '0.5s' }}>💍</div>
       
       <div className="text-center max-w-4xl mx-auto animate-fade-in">
         {/* Main announcement */}
